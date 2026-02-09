@@ -284,9 +284,16 @@ export function PhotosPage() {
                 <h3 className="mb-2 text-xl font-semibold text-gray-900 pointer-events-none">
                   Drag and drop your files
                 </h3>
-                <p className="mb-4 text-sm text-gray-500 pointer-events-none">
-                  or click the icon to browse
-                </p>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent double triggering if parent has click handler
+                    handleBrowseClick();
+                  }}
+                  className="mb-4 rounded bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500"
+                >
+                  Browse Photos
+                </button>
                 <p className="text-xs text-gray-400 pointer-events-none">
                   Select up to 9 photos. JPEG, HEIF, or HEIC
                 </p>

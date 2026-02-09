@@ -3,13 +3,14 @@ import type { MultiSelectFieldConfig } from "../types";
 
 interface FormMultiSelectProps {
   config: MultiSelectFieldConfig;
+  value?: string[];
 }
 
-export function FormMultiSelect({ config }: FormMultiSelectProps) {
+export function FormMultiSelect({ config, value }: FormMultiSelectProps) {
   const id = config.id ?? `field-${config.name}`;
   const max = config.maxSelections ?? 10;
 
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>(value ?? []);
   const [open, setOpen] = useState(false);
 
   const toggleValue = (value: string) => {

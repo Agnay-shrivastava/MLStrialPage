@@ -104,7 +104,7 @@ export function FormMultiSelect({ config, value }: FormMultiSelectProps) {
               return (
                 <li
                   key={opt.value}
-                  className={`cursor-pointer px-3 py-2 text-sm hover:bg-gray-100 ${
+                  className={`cursor-pointer flex items-center px-3 py-2 text-sm hover:bg-gray-100 ${
                     isSelected ? "bg-gray-100 font-medium" : ""
                   }`}
                   onMouseDown={(e) => e.preventDefault()}
@@ -113,8 +113,14 @@ export function FormMultiSelect({ config, value }: FormMultiSelectProps) {
                   aria-selected={isSelected}
                   data-option-value={opt.value}
                 >
-                  {opt.label}
-                  {isSelected && <span className="ml-2 text-gray-500">✓</span>}
+                  {/* checkbox indicator */}
+                  <input
+                    type="checkbox"
+                    className="mr-2 h-4 w-4 cursor-pointer text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    checked={isSelected}
+                    readOnly
+                  />
+                  <span>{opt.label}</span>
                 </li>
               );
             })}
